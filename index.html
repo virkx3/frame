@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>VIRK — Educational & Creative Storefront (Proprietor: Simranjeet Singh)</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -33,8 +33,7 @@
     .card:hover{transform:translateY(-4px);transition:.25s}
     .product-img{width:100%;height:170px;object-fit:cover;border-radius:8px;border:1px solid #d7dee9;margin-bottom:10px}
     .price{color:var(--danger);font-weight:800;margin:.35rem 0 1rem}
-    .btn{display:inline-block;padding:.7rem 1rem;border-radius:8px;border:0;background:var(--danger);color:#fff;font-weight:700;cursor:not-allowed;opacity:.9;transition:background 0.2s}
-    .notify-btn{background:var(--warn);color:var(--ink);cursor:pointer}
+    .btn{display:inline-block;padding:.7rem 1rem;border-radius:8px;border:0;background:var(--muted);color:#fff;font-weight:700;cursor:not-allowed;opacity:.8}
     .pill{display:inline-flex;align-items:center;gap:.4rem;background:#eef5ff;color:#0a3d91;border:1px solid #cfe2ff;padding:.35rem .6rem;border-radius:999px;font-size:.85rem;font-weight:700}
     details{background:#f6f6f6;border-left:4px solid var(--warn);padding:.6rem .8rem;border-radius:8px;margin-top:.6rem}
     pre{background:#f1f3f5;border:1px solid #dde1e6;border-radius:6px;padding:.75rem;overflow:auto}
@@ -68,66 +67,70 @@
   <section class="hero">
     <div class="container">
       <h1>VIRK — Educational & Creative Services</h1>
-      <p class="small">Curated **Educational & Creative Services** by **Simranjeet Singh**, featuring premium custom photo-frames and specialised learning resources.
-        <br>We are a registered micro-enterprise dedicated to quality and customer satisfaction.</p>
-      <div style="margin-top:10px" class="pill"><i class="fa-solid fa-id-card-clip"></i> Udyam Registered: <b>UDYAM-PB-07-0005384</b></div>
+      <p class="small">A sole-proprietorship by <b>Simranjeet Singh</b> (Udyam Registered). This demo storefront showcases
+        our <b>education-related services</b> and sample <b>creative photo-frames</b>. Payments are disabled until PhonePe onboarding completes.</p>
+      <div style="margin-top:10px" class="pill"><i class="fa-solid fa-id-card-clip"></i> Udyam URN: <b>UDYAM-PB-07-0005384</b></div>
     </div>
   </section>
 
+  <!-- ABOUT -->
   <section id="about" class="section">
     <div class="container two">
       <div class="card">
         <h2><i class="fa-solid fa-circle-info"></i> About VIRK</h2>
-        <p><b>VIRK</b> is a micro enterprise run by **Simranjeet Singh** that proudly provides
-          **education-related services** (consultation, resources, community programs)
-          and undertakes **creative trading activities**, specialising in premium custom photo frames.</p>
-        <p class="muted">Note: All images used below are royalty-free or appropriately licensed stock imagery for product representation.</p>
+        <p><b>VIRK</b> is a micro enterprise run by <b>Simranjeet Singh</b> that provides
+          <b>education-related services</b> (consultation, learning resources, community programs)
+          and also undertakes <b>creative trading activities</b> such as premium custom photo frames.
+          This page is a verification demo for integrating the PhonePe Payment Gateway.</p>
+        <p class="muted">NOTE: All images below are licensed/free stock samples; sales are disabled during verification.</p>
       </div>
       <div class="card">
         <h2><i class="fa-solid fa-shield-halved"></i> Payment Status</h2>
         <div class="highlight">
-          <p><b>Temporary Payment Pause.</b> We are currently performing a system upgrade to our payment processing infrastructure.</p>
+          <p><b>Gateway onboarding in progress.</b> Example UPI intent (non-functional):</p>
           <details>
-            <summary><i class="fa-solid fa-wrench"></i> **View System Notice**</summary>
-            <p class="small">To ensure the highest level of security and efficiency, we have temporarily suspended all transactions. You can still browse our collection. Online payments will resume shortly.</p>
-            <pre>Sample UPI Intent: upi://pay?pa=yourvpa@bank&amp;pn=VIRK&amp;tn=ORDER-VIRK-001&amp;am=1&amp;cu=INR</pre>
+            <summary><i class="fa-solid fa-link"></i> Show sample UPI link</summary>
+            <pre>upi://pay?pa=yourvpa@bank&amp;pn=VIRK&amp;tn=ORDER-DEMO-001&amp;am=1&amp;cu=INR</pre>
           </details>
-          <p class="small">Security: We never store card/UPI credentials. All live transactions are securely processed by our certified payment gateway partner.</p>
+          <p class="small">Security: We never store card/UPI credentials. Payments will be processed by your UPI app or by our gateway partner after activation.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- PRODUCTS -->
   <section id="products" class="section">
     <div class="container">
-      <h2><i class="fa-solid fa-images"></i> Premium Photo-Frame Collection</h2>
-      <p class="muted">All items are available for browsing. Ordering is temporarily paused until system upgrades complete.</p>
+      <h2><i class="fa-solid fa-images"></i> Sample Photo-Frame Collection</h2>
+      <p class="muted">Demo catalog only — orders are disabled until onboarding completes.</p>
       <div class="grid">
-        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2023/04/11/15/51/ai-generated-7917611_1280.jpg" alt="Modern Edge Frame - Small"><b>Modern Edge Frame - Small</b><div class="price">₹399</div><button class="btn notify-btn"><i class="fa-solid fa-bell"></i> Notify Me When Available</button></div>
-        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2024/05/14/10/51/ai-generated-8760871_1280.png" alt="Classic Wooden Frame - 5x7"><b>Classic Wooden Frame - 5x7</b><div class="price">₹299</div><button class="btn notify-btn"><i class="fa-solid fa-bell"></i> Notify Me When Available</button></div>
-        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2024/01/26/15/42/venom-8534168_1280.jpg" alt="Minimalist Acrylic Frame"><b>Minimalist Acrylic Frame</b><div class="price">₹399</div><button class="btn notify-btn"><i class="fa-solid fa-bell"></i> Notify Me When Available</button></div>
-        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2022/06/05/10/58/action-figures-7243778_1280.jpg" alt="Gallery Set - 3 Pcs"><b>Gallery Set - 3 Pcs</b><div class="price">₹299</div><button class="btn notify-btn"><i class="fa-solid fa-bell"></i> Notify Me When Available</button></div>
-        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2023/12/01/22/27/spiderman-8424632_1280.jpg" alt="Desktop Photo Stand"><b>Desktop Photo Stand</b><div class="price">₹399</div><button class="btn notify-btn"><i class="fa-solid fa-bell"></i> Notify Me When Available</button></div>
-        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2021/02/10/13/16/iron-man-6002054_1280.jpg" alt="Large Poster Frame"><b>Large Poster Frame</b><div class="price">₹299</div><button class="btn notify-btn"><i class="fa-solid fa-bell"></i> Notify Me When Available</button></div>
-        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2023/06/28/20/04/ai-generated-8095124_1280.png" alt="Ornate Gold Frame"><b>Ornate Gold Frame</b><div class="price">₹399</div><button class="btn notify-btn"><i class="fa-solid fa-bell"></i> Notify Me When Available</button></div>
-        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2023/06/28/06/35/ai-generated-8093603_1280.jpg" alt="Deep Box Frame - Black"><b>Deep Box Frame - Black</b><div class="price">₹299</div><button class="btn notify-btn"><i class="fa-solid fa-bell"></i> Notify Me When Available</button></div>
-        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2019/02/20/10/51/spiderman-4008954_1280.jpg" alt="Metallic Slim Frame"><b>Metallic Slim Frame</b><div class="price">₹399</div><button class="btn notify-btn"><i class="fa-solid fa-bell"></i> Notify Me When Available</button></div>
-        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2022/08/09/09/01/black-7374488_1280.png" alt="Square Insta Frame"><b>Square Insta Frame</b><div class="price">₹299</div><button class="btn notify-btn"><i class="fa-solid fa-bell"></i> Notify Me When Available</button></div>
+        <!-- 10 items with your links -->
+        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2023/04/11/15/51/ai-generated-7917611_1280.jpg" alt="Modern Edge Frame - Small"><b>Modern Edge Frame - Small</b><div class="price">₹399</div><button class="btn">Buy Now (Disabled)</button></div>
+        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2024/05/14/10/51/ai-generated-8760871_1280.png" alt="Classic Wooden Frame - 5x7"><b>Classic Wooden Frame - 5x7</b><div class="price">₹299</div><button class="btn">Buy Now (Disabled)</button></div>
+        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2024/01/26/15/42/venom-8534168_1280.jpg" alt="Minimalist Acrylic Frame"><b>Minimalist Acrylic Frame</b><div class="price">₹399</div><button class="btn">Buy Now (Disabled)</button></div>
+        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2022/06/05/10/58/action-figures-7243778_1280.jpg" alt="Gallery Set - 3 Pcs"><b>Gallery Set - 3 Pcs</b><div class="price">₹299</div><button class="btn">Buy Now (Disabled)</button></div>
+        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2023/12/01/22/27/spiderman-8424632_1280.jpg" alt="Desktop Photo Stand"><b>Desktop Photo Stand</b><div class="price">₹399</div><button class="btn">Buy Now (Disabled)</button></div>
+        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2021/02/10/13/16/iron-man-6002054_1280.jpg" alt="Large Poster Frame"><b>Large Poster Frame</b><div class="price">₹299</div><button class="btn">Buy Now (Disabled)</button></div>
+        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2023/06/28/20/04/ai-generated-8095124_1280.png" alt="Ornate Gold Frame"><b>Ornate Gold Frame</b><div class="price">₹399</div><button class="btn">Buy Now (Disabled)</button></div>
+        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2023/06/28/06/35/ai-generated-8093603_1280.jpg" alt="Deep Box Frame - Black"><b>Deep Box Frame - Black</b><div class="price">₹299</div><button class="btn">Buy Now (Disabled)</button></div>
+        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2019/02/20/10/51/spiderman-4008954_1280.jpg" alt="Metallic Slim Frame"><b>Metallic Slim Frame</b><div class="price">₹399</div><button class="btn">Buy Now (Disabled)</button></div>
+        <div class="card"><img class="product-img" src="https://cdn.pixabay.com/photo/2022/08/09/09/01/black-7374488_1280.png" alt="Square Insta Frame"><b>Square Insta Frame</b><div class="price">₹299</div><button class="btn">Buy Now (Disabled)</button></div>
       </div>
-      <p class="muted" style="margin-top:10px;text-align:center">All product designs, names, and imagery are property of their respective owners and used for representation only.</p>
+      <p class="muted" style="margin-top:10px;text-align:center">All third-party names/imagery belong to their respective owners. Demo only.</p>
     </div>
   </section>
 
+  <!-- POLICIES -->
   <section id="shipping" class="section">
     <div class="container card">
       <h2><i class="fa-solid fa-truck-fast"></i> Shipping & Delivery Policy</h2>
       <ul class="clean">
-        <li><b>Processing Time:</b> All orders are processed within 2–4 business days from placement.</li>
-        <li><b>Delivery Time:</b> Standard delivery takes 5–9 business days after dispatch, depending on location.</li>
-        <li><b>COD:</b> Cash on Delivery is currently unavailable. All orders must be prepaid through online methods upon system restoration.</li>
-        <li><b>Tracking:</b> Comprehensive courier and tracking details will be shared via SMS/Email once the order is dispatched.</li>
-        <li><b>Address Errors:</b> Customers are responsible for providing correct and sufficient address details. Errors may incur re-shipping and Return-To-Origin (RTO) charges.</li>
-        <li><b>Potential Delays:</b> Delivery timelines may be affected by public holidays, extreme weather conditions, or delivery to remote areas.</li>
+        <li><b>Processing:</b> 2–4 business days from order placement.</li>
+        <li><b>Delivery:</b> 5–9 business days after dispatch, location dependent.</li>
+        <li><b>COD:</b> Not available during verification. Prepaid only after gateway activation.</li>
+        <li><b>Tracking:</b> Courier & tracking details shared via SMS/Email on dispatch.</li>
+        <li><b>Address errors:</b> Wrong/insufficient address may cause RTO and re-shipping fees.</li>
+        <li><b>Delays:</b> Public holidays, weather, or remote areas may affect timelines.</li>
       </ul>
     </div>
   </section>
@@ -136,12 +139,12 @@
     <div class="container card">
       <h2><i class="fa-solid fa-rotate-left"></i> Cancellation, Return & Refund Policy</h2>
       <ul class="clean">
-        <li><b>Return Window:</b> We accept returns within 7 days from the date of delivery specifically for confirmed manufacturing defects or damage during transit.</li>
-        <li><b>Proof Required:</b> Mandatory unboxing photo and video evidence must be submitted to successfully process transit damage claims.</li>
-        <li><b>Non-returnable Items:</b> Products that have been used, altered, or are custom-made/personalised are not eligible for return.</li>
-        <li><b>Cancellations:</b> Orders can only be cancelled before they have been dispatched from our facility.</li>
-        <li><b>Refund Processing:</b> Approved refunds will be initiated within 5–7 business days and credited back to the original method of payment.</li>
-        <li><b>UPI Failures:</b> For any UPI transaction reversal failures, the customer must provide the UTR/Reference ID for necessary tracking and resolution.</li>
+        <li><b>Return Window:</b> 7 days from delivery for manufacturing defects/transit damage.</li>
+        <li><b>Proof:</b> Unboxing photos/video required for damage claims.</li>
+        <li><b>Non-returnable:</b> Used/altered/custom items.</li>
+        <li><b>Cancellations:</b> Allowed only before dispatch.</li>
+        <li><b>Refunds:</b> After inspection approval; to original payment method in 5–7 business days.</li>
+        <li><b>UPI failures:</b> Provide UTR/Reference ID for tracking reversals.</li>
       </ul>
     </div>
   </section>
@@ -150,12 +153,12 @@
     <div class="container card">
       <h2><i class="fa-solid fa-user-shield"></i> Privacy Policy</h2>
       <ul class="clean">
-        <li><b>Data Collected:</b> We collect essential contact and shipping information solely for the purpose of fulfilling your order and providing customer support.</li>
-        <li><b>Payment Security:</b> **We do not store or process card numbers, UPI IDs, or any sensitive financial credentials.** Transactions are handled securely by your chosen UPI application or our PCI-compliant payment gateway.</li>
-        <li><b>Usage Logs:</b> Limited server and security logs are maintained for fraud prevention and system integrity purposes.</li>
-        <li><b>Data Sharing:</b> Data is strictly shared only with necessary third parties, specifically our courier partners and secure payment processors, to complete your transaction and delivery.</li>
-        <li><b>Data Retention:</b> Customer and transaction data is retained as required by Indian tax, consumer, and legal compliance laws.</li>
-        <li><b>Your Rights:</b> You have the right to request access, correction, or deletion of your personal data by contacting us, subject to legal retention obligations.</li>
+        <li><b>Data:</b> We collect basic contact & shipping details to fulfil orders and provide support.</li>
+        <li><b>Payments:</b> We do not store card/UPI credentials. Transactions are processed by your UPI app or gateway.</li>
+        <li><b>Logs:</b> Limited security/fraud-prevention logs may be kept.</li>
+        <li><b>Sharing:</b> Only with courier partners and payment processors to complete the order.</li>
+        <li><b>Retention:</b> As required by Indian tax & legal laws.</li>
+        <li><b>User rights:</b> Email us to access/correct/delete your data where legally allowed.</li>
       </ul>
     </div>
   </section>
@@ -164,16 +167,17 @@
     <div class="container card">
       <h2><i class="fa-solid fa-file-contract"></i> Terms & Conditions</h2>
       <ul class="clean">
-        <li><b>Eligibility:</b> By purchasing, you confirm you are at least 18 years of age or possess legal guardian consent.</li>
-        <li><b>Pricing:</b> All prices are listed in **INR** (Indian Rupees). Prices are subject to applicable taxes and may change without prior notice.</li>
-        <li><b>Risk of Loss:</b> The risk of loss or damage to products transfers to you upon our delivery to the shipping carrier.</li>
-        <li><b>Liability:</b> Our total liability for any claim related to a product is strictly limited to the purchase value of that product.</li>
-        <li><b>Governing Law:</b> These terms are governed by the laws of India. Any disputes will fall under the exclusive jurisdiction of the courts local to our registered address.</li>
-        <li><b>Intellectual Property (IP):</b> All branding, logos, and product imagery are our property or used with permission. We respect third-party IP and do not sell unlicensed content.</li>
+        <li><b>Eligibility:</b> You are 18+ or have guardian consent.</li>
+        <li><b>Pricing:</b> INR; taxes may apply; prices subject to change.</li>
+        <li><b>Risk of loss:</b> Transfers to you once handed to the carrier.</li>
+        <li><b>Liability:</b> Limited to the product value.</li>
+        <li><b>Governing law:</b> India; local jurisdiction of registered address.</li>
+        <li><b>IP:</b> Third-party names/imagery belong to their owners. We do not sell unlicensed content.</li>
       </ul>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="container card">
       <h2><i class="fa-solid fa-envelope"></i> Contact & Grievance Details</h2>
@@ -186,12 +190,14 @@
         City: Firozepur, District: Firozepur, State: Punjab, PIN: 152023</p>
       <p><i class="fa-solid fa-id-card"></i> <b>Udyam Registration (URN):</b> UDYAM-PB-07-0005384</p>
       <p class="small" style="margin-top:.6rem;border-top:1px dashed var(--bord);padding-top:.6rem;color:var(--ok)">
-        Response Service Level Agreement (SLA): We are committed to responding within 48 business hours to all grievance and support queries.
+        Response SLA: We aim to respond within 48 business hours to all grievance/support queries.
       </p>
 
       <details style="margin-top:12px">
-        <summary><i class="fa-solid fa-file-signature"></i> Proprietor Declaration</summary>
-        <pre class="small">I, Simranjeet Singh (PAN holder), confirm that I operate this sole-proprietorship under the brand name "VIRK" (Udyam URN: UDYAM-PB-07-0005384). The associated bank account is held in the name of Simranjeet Singh for all business receipts.</pre>
+        <summary><i class="fa-solid fa-file-signature"></i> Proprietor Self-Declaration (for banking/PG verification)</summary>
+        <pre class="small">I, Simranjeet Singh (PAN holder), operate a sole-proprietorship under the brand name "VIRK".
+Udyam URN: UDYAM-PB-07-0005384. My bank account in the name of Simranjeet Singh is used for business receipts.
+This declaration supports payment gateway KYC verification.</pre>
       </details>
     </div>
   </section>
