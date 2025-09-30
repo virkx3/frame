@@ -1,255 +1,756 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>VIRK — Demo Storefront (Website Verification)</title>
-  <meta name="description" content="Demo storefront with mandatory policies and contact/grievance details for PhonePe website verification." />
-  <style>
-    /* ===== Minimal, Modern CSS for the Demo Storefront (self‑contained) ===== */
-    :root {
-      --primary-color: #007bff;
-      --secondary-color: #f8f9fa;
-      --dark-bg: #343a40;
-      --text-light: #f8f9fa;
-      --text-dark: #212529;
-      --card-bg: #ffffff;
-      --border-color: #e9ecef;
-      --disabled-bg: #6c757d;
-    }/* Base Reset and Body Styling */
-html { scroll-behavior: smooth; }
-body {
-  margin: 0; padding: 0; line-height: 1.6;
-  background-color: var(--secondary-color);
-  color: var(--text-dark);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-[id]{ scroll-margin-top: 90px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRK — Modern Demo Storefront</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --primary-dark: #0056b3;
+            --secondary-color: #f8f9fa;
+            --dark-bg: #343a40;
+            --text-light: #f8f9fa;
+            --text-dark: #212529;
+            --card-bg: #ffffff;
+            --border-color: #e9ecef;
+            --disabled-bg: #6c757d;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-a { color: var(--primary-color); text-decoration: none; }
-a:hover { text-decoration: underline; }
-a:focus-visible, .btn:focus-visible { outline: 3px solid #ffc107; outline-offset: 2px; text-decoration: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Utility */
-.section-padding { padding: 3rem 0; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* Sticky Header */
-.sticky-header {
-  position: sticky; top: 0; z-index: 1000;
-  background: linear-gradient(to right, #0056b3, var(--primary-color));
-  color: var(--text-light);
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
-}
-.header-content { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
-.brand-name { margin: 0; font-size: 1.8rem; font-weight: 700; }
-.sticky-header nav a { color: var(--text-light); margin-left: 1.5rem; font-weight: 500; transition: color .3s; }
-.sticky-header nav a:hover { color: #ffc107; text-decoration: none; }
+        body {
+            line-height: 1.6;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
 
-/* Headings and Separator */
-h2 { color: var(--primary-color); margin-bottom: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: .5rem; }
-hr { border: none; border-top: 1px solid var(--border-color); margin: 2rem 0; }
+        [id] {
+            scroll-margin-top: 90px;
+        }
 
-/* Product Grid */
-.subtitle { font-style: italic; color: var(--disabled-bg); }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-.product-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; box-shadow: 0 4px 8px rgba(0,0,0,.05); display: flex; flex-direction: column; transition: transform .3s; }
-.product-card:hover { transform: translateY(-5px); }
-.placeholder-img {
-  width: 100%; height: 150px; border-radius: 4px; margin-bottom: 1rem; border: 1px solid #aaa; background-color: var(--border-color);
-  background-image: repeating-linear-gradient(45deg,#ccc 0px,#ccc 10px,#e0e0e0 10px,#e0e0e0 20px);
-}
-.price { font-size: 1.25rem; color: #dc3545; font-weight: 700; margin: .5rem 0 1rem; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
-/* CTA Button */
-.btn { display: block; padding: .75rem 1rem; text-align: center; border-radius: 4px; font-weight: 600; transition: background-color .3s; margin-top: auto; }
-.btn-disabled { background-color: var(--disabled-bg); color: var(--text-light); cursor: not-allowed; pointer-events: none; opacity: .7; }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
 
-/* Policy Sections */
-.policy-section ul { list-style: disc; padding-left: 1.5rem; }
-.policy-section li { margin-bottom: .8rem; }
+        a:hover {
+            text-decoration: underline;
+        }
 
-/* Payment Status Card */
-.payment-status-section { padding: 2rem 0; }
-.payment-card { background-color: #fff3cd; border: 1px solid #ffeeba; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; }
-.payment-card h3 { color: #856404; }
-details { background-color: #f1f1f1; border-left: 4px solid #ffc107; padding: .5rem 1rem; margin-top: 1rem; border-radius: 4px; }
-summary { cursor: pointer; font-weight: 600; }
-details p { padding-left: 1rem; }
-pre code { display: block; background-color: #e9ecef; padding: .75rem; overflow-x: auto; border-radius: 4px; font-size: .9rem; word-break: break-all; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-.note, .security-note { font-size: .9rem; margin-top: 1rem; font-style: italic; }
-.compliance-notice { text-align: center; color: var(--disabled-bg); font-size: .9rem; margin-top: 2rem; }
+        a:focus-visible, .btn:focus-visible {
+            outline: 3px solid var(--warning-color);
+            outline-offset: 2px;
+            text-decoration: none;
+        }
 
-/* Contact Section */
-.contact-details-card { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,.05); }
-.contact-details-card p { margin: .75rem 0; }
-.placeholder-text { color: #dc3545; font-style: italic; font-weight: bold; }
-.sla-note { margin-top: 1.5rem; border-top: 1px dashed var(--border-color); padding-top: 1rem; font-weight: 500; color: #28a745; }
+        /* Utility Classes */
+        .section-padding {
+            padding: 4rem 0;
+        }
 
-/* Footer */
-footer { background-color: var(--dark-bg); color: var(--text-light); padding: 1.5rem 0; margin-top: 3rem; font-size: .9rem; }
-.footer-content { display: flex; justify-content: space-between; align-items: center; }
-.footer-nav a { color: var(--text-light); margin-left: 1rem; opacity: .8; }
-.footer-nav a:hover { opacity: 1; text-decoration: underline; }
+        .text-center {
+            text-align: center;
+        }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .header-content { flex-direction: column; text-align: center; }
-  .sticky-header nav { margin-top: .5rem; }
-  .sticky-header nav a { margin: 0 .5rem; display: inline-block; padding: .25rem 0; }
-  .footer-content { flex-direction: column; }
-  .footer-content p { margin-bottom: .5rem; }
-  .footer-nav a { margin: 0 .5rem; }
-}
-@media (max-width: 480px) {
-  .sticky-header nav { display: flex; flex-wrap: wrap; justify-content: center; }
-}
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-  </style>
+        /* Sticky Header */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+            color: var(--text-light);
+            box-shadow: 0 2px 10px rgba(0,0,0,.15);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .brand-name {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-name i {
+            margin-right: 0.5rem;
+        }
+
+        .sticky-header nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .sticky-header nav a {
+            color: var(--text-light);
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .sticky-header nav a:hover {
+            color: var(--warning-color);
+            text-decoration: none;
+        }
+
+        .sticky-header nav a i {
+            margin-right: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Headings and Separator */
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: .5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h2 i {
+            margin-right: 0.5rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            margin: 2rem 0;
+        }
+
+        /* Product Grid */
+        .subtitle {
+            font-style: italic;
+            color: var(--disabled-bg);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+
+        .product-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+        }
+
+        .placeholder-img {
+            width: 100%;
+            height: 180px;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border: 1px solid #aaa;
+            background-color: var(--border-color);
+            background-image: repeating-linear-gradient(45deg,#ccc 0px,#ccc 10px,#e0e0e0 10px,#e0e0e0 20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .product-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            color: var(--danger-color);
+            font-weight: 700;
+            margin: .5rem 0 1rem;
+        }
+
+        /* CTA Button */
+        .btn {
+            display: block;
+            padding: .75rem 1rem;
+            text-align: center;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: auto;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .btn-disabled {
+            background-color: var(--disabled-bg);
+            color: var(--text-light);
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: .7;
+        }
+
+        /* Policy Sections */
+        .policy-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .policy-section li {
+            margin-bottom: .8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .policy-section li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Payment Status Card */
+        .payment-status-section {
+            padding: 2rem 0;
+        }
+
+        .payment-card {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .payment-card h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-card h3 i {
+            margin-right: 0.5rem;
+        }
+
+        details {
+            background-color: #f1f1f1;
+            border-left: 4px solid var(--warning-color);
+            padding: .5rem 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        summary i {
+            margin-right: 0.5rem;
+        }
+
+        details p {
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        pre code {
+            display: block;
+            background-color: #e9ecef;
+            padding: .75rem;
+            overflow-x: auto;
+            border-radius: 4px;
+            font-size: .9rem;
+            word-break: break-all;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        }
+
+        .note, .security-note {
+            font-size: .9rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .compliance-notice {
+            text-align: center;
+            color: var(--disabled-bg);
+            font-size: .9rem;
+            margin-top: 2rem;
+        }
+
+        /* Contact Section */
+        .contact-details-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-details-card p {
+            margin: .75rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details-card p i {
+            margin-right: 0.5rem;
+            width: 20px;
+            color: var(--primary-color);
+        }
+
+        .placeholder-text {
+            color: var(--danger-color);
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .sla-note {
+            margin-top: 1.5rem;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 1rem;
+            font-weight: 500;
+            color: var(--success-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            font-size: .9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-nav a {
+            color: var(--text-light);
+            margin-left: 1rem;
+            opacity: .8;
+        }
+
+        .footer-nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .sticky-header nav {
+                margin-top: .5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .sticky-header nav a {
+                margin: 0 .5rem;
+                display: inline-block;
+                padding: .25rem 0;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section p {
+                font-size: 1rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-content p {
+                margin-bottom: .5rem;
+            }
+
+            .footer-nav {
+                margin-top: 0.5rem;
+            }
+
+            .footer-nav a {
+                margin: 0 .5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sticky-header nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- This demo page is for PAYMENT GATEWAY WEBSITE VERIFICATION ONLY. No real checkout. -->
-  <header class="sticky-header">
-    <div class="container header-content">
-      <h1 class="brand-name">VIRK</h1>
-      <nav>
-        <a href="#shop">Shop</a>
-        <a href="#shipping">Shipping</a>
-        <a href="#refunds">Refunds</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#terms">Terms</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>  <main class="container">
-    <!-- SHOP / CATALOG -->
-    <section id="shop" class="section-padding">
-      <h2>Our Catalog: Generic Photo Frames (Demo)</h2>
-      <p class="subtitle">Sample placeholders only. <strong>Replace with original/licensed content before taking real orders.</strong></p>
-      <div class="product-grid">
-        <!-- Ten generic demo products to show a real catalog layout -->
-        <div class="product-card"><div class="placeholder-img" aria-label="Placeholder Image"></div><h3>Modern Edge Frame - Small</h3><p class="price">₹399</p><a href="#" class="btn btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;">Buy Now (Disabled)</a></div>
-        <div class="product-card"><div class="placeholder-img" aria-label="Placeholder Image"></div><h3>Classic Wooden Frame - 5x7</h3><p class="price">₹299</p><a href="#" class="btn btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;">Buy Now (Disabled)</a></div>
-        <div class="product-card"><div class="placeholder-img" aria-label="Placeholder Image"></div><h3>Minimalist Acrylic Frame</h3><p class="price">₹399</p><a href="#" class="btn btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;">Buy Now (Disabled)</a></div>
-        <div class="product-card"><div class="placeholder-img" aria-label="Placeholder Image"></div><h3>Gallery Set - 3 Pcs</h3><p class="price">₹299</p><a href="#" class="btn btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;">Buy Now (Disabled)</a></div>
-        <div class="product-card"><div class="placeholder-img" aria-label="Placeholder Image"></div><h3>Desktop Photo Stand</h3><p class="price">₹399</p><a href="#" class="btn btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;">Buy Now (Disabled)</a></div>
-        <div class="product-card"><div class="placeholder-img" aria-label="Placeholder Image"></div><h3>Large Poster Frame</h3><p class="price">₹299</p><a href="#" class="btn btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;">Buy Now (Disabled)</a></div>
-        <div class="product-card"><div class="placeholder-img" aria-label="Placeholder Image"></div><h3>Ornate Gold Frame</h3><p class="price">₹399</p><a href="#" class="btn btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;">Buy Now (Disabled)</a></div>
-        <div class="product-card"><div class="placeholder-img" aria-label="Placeholder Image"></div><h3>Deep Box Frame - Black</h3><p class="price">₹299</p><a href="#" class="btn btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;">Buy Now (Disabled)</a></div>
-        <div class="product-card"><div class="placeholder-img" aria-label="Placeholder Image"></div><h3>Metallic Slim Frame</h3><p class="price">₹399</p><a href="#" class="btn btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;">Buy Now (Disabled)</a></div>
-        <div class="product-card"><div class="placeholder-img" aria-label="Placeholder Image"></div><h3>Square Insta Frame</h3><p class="price">₹299</p><a href="#" class="btn btn-disabled" aria-disabled="true" tabindex="-1" onclick="return false;">Buy Now (Disabled)</a></div>
-      </div>
-    </section><hr />
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="brand-name"><i class="fas fa-store"></i> VIRK</h1>
+                <nav>
+                    <a href="#products"><i class="fas fa-box"></i> Shop</a>
+                    <a href="#shipping"><i class="fas fa-shipping-fast"></i> Shipping</a>
+                    <a href="#refunds"><i class="fas fa-undo"></i> Refunds</a>
+                    <a href="#privacy"><i class="fas fa-user-shield"></i> Privacy</a>
+                    <a href="#terms"><i class="fas fa-file-contract"></i> Terms</a>
+                    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
-<!-- PAYMENT STATUS / UPI INTENT (illustrative only) -->
-<section class="section-padding payment-status-section">
-  <div class="payment-card">
-    <h3>Payment Gateway Status</h3>
-    <p><strong>Gateway onboarding in progress.</strong> The UPI links shown are illustrative and <strong>do not confirm an order.</strong></p>
-    <details>
-      <summary>Example UPI Intent Link (Illustrative Only)</summary>
-      <p>This is a non-functional example of how a UPI payment link would look:</p>
-      <pre><code>upi://pay?pa=yourvpa@bank&amp;pn=VIRK&amp;tn=ORDER-DEMO-001&amp;am=1&amp;cu=INR</code></pre>
-      <p class="note"><strong>NOTE:</strong> Replace <code>yourvpa@bank</code> with your actual UPI VPA after approval.</p>
-    </details>
-    <p class="security-note"><strong>Security:</strong> We do not store card details. Payments are processed by your UPI app or, when enabled, by our Payment Gateway partner.</p>
-  </div>
-  <p class="compliance-notice"><strong>IP Compliance Notice:</strong> All third-party names/imagery belong to their respective owners. We do not sell unlicensed content. This site uses sample placeholders only.</p>
-</section>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>VIRK Photo Frames</h1>
+            <p>Discover our premium collection of photo frames to preserve your precious memories in style.</p>
+            <a href="#products" class="btn btn-primary" style="display: inline-block; width: auto; padding: 0.8rem 1.5rem;">
+                <i class="fas fa-shopping-bag"></i> Browse Collection
+            </a>
+        </div>
+    </section>
 
-<hr />
+    <!-- Products Section -->
+    <section id="products" class="section-padding">
+        <div class="container">
+            <h2><i class="fas fa-th-large"></i> Our Collection</h2>
+            <p class="subtitle">Sample placeholders only. Replace with original/licensed content before taking real orders.</p>
+            
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="placeholder-img">Modern Edge Frame - Small</div>
+                    <h3 class="product-name">Modern Edge Frame - Small</h3>
+                    <div class="price">₹399</div>
+                    <button class="btn btn-disabled">Buy Now (Disabled)</button>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="placeholder-img">Classic Wooden Frame - 5x7</div>
+                    <h3 class="product-name">Classic Wooden Frame - 5x7</h3>
+                    <div class="price">₹299</div>
+                    <button class="btn btn-disabled">Buy Now (Disabled)</button>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="placeholder-img">Minimalist Acrylic Frame</div>
+                    <h3 class="product-name">Minimalist Acrylic Frame</h3>
+                    <div class="price">₹399</div>
+                    <button class="btn btn-disabled">Buy Now (Disabled)</button>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="placeholder-img">Gallery Set - 3 Pcs</div>
+                    <h3 class="product-name">Gallery Set - 3 Pcs</h3>
+                    <div class="price">₹299</div>
+                    <button class="btn btn-disabled">Buy Now (Disabled)</button>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="placeholder-img">Desktop Photo Stand</div>
+                    <h3 class="product-name">Desktop Photo Stand</h3>
+                    <div class="price">₹399</div>
+                    <button class="btn btn-disabled">Buy Now (Disabled)</button>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="placeholder-img">Large Poster Frame</div>
+                    <h3 class="product-name">Large Poster Frame</h3>
+                    <div class="price">₹299</div>
+                    <button class="btn btn-disabled">Buy Now (Disabled)</button>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="placeholder-img">Ornate Gold Frame</div>
+                    <h3 class="product-name">Ornate Gold Frame</h3>
+                    <div class="price">₹399</div>
+                    <button class="btn btn-disabled">Buy Now (Disabled)</button>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="placeholder-img">Deep Box Frame - Black</div>
+                    <h3 class="product-name">Deep Box Frame - Black</h3>
+                    <div class="price">₹299</div>
+                    <button class="btn btn-disabled">Buy Now (Disabled)</button>
+                </div>
+                
+                <!-- Product 9 -->
+                <div class="product-card">
+                    <div class="placeholder-img">Metallic Slim Frame</div>
+                    <h3 class="product-name">Metallic Slim Frame</h3>
+                    <div class="price">₹399</div>
+                    <button class="btn btn-disabled">Buy Now (Disabled)</button>
+                </div>
+                
+                <!-- Product 10 -->
+                <div class="product-card">
+                    <div class="placeholder-img">Square Insta Frame</div>
+                    <h3 class="product-name">Square Insta Frame</h3>
+                    <div class="price">₹299</div>
+                    <button class="btn btn-disabled">Buy Now (Disabled)</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- SHIPPING POLICY -->
-<section id="shipping" class="section-padding policy-section">
-  <h2>Shipping &amp; Delivery Policy</h2>
-  <ul>
-    <li><strong>Processing Time:</strong> Orders are typically dispatched within <strong>2–4 business days</strong> from order placement.</li>
-    <li><strong>Delivery Time:</strong> Estimated delivery is <strong>5–9 business days</strong> after dispatch, depending on location.</li>
-    <li><strong>Cash on Delivery (COD):</strong> COD is <strong>not available</strong> during the verification phase. All orders must be prepaid.</li>
-    <li><strong>Tracking:</strong> A tracking number and courier details will be shared via <strong>email/SMS</strong> once the order is dispatched.</li>
-    <li><strong>Address Errors:</strong> Customers are responsible for providing the correct address. Errors may lead to <strong>Return to Origin (RTO)</strong> and additional charges.</li>
-    <li><strong>Exceptions:</strong> Delivery timelines may be affected by public holidays, unforeseen weather events, or remote delivery locations.</li>
-  </ul>
-</section>
+    <hr />
 
-<hr />
+    <!-- Payment Status Section -->
+    <section class="section-padding payment-status-section">
+        <div class="container">
+            <div class="payment-card">
+                <h3><i class="fas fa-credit-card"></i> Payment Gateway Status</h3>
+                <p><strong>Gateway onboarding in progress.</strong> The UPI links shown are illustrative and <strong>do not confirm an order.</strong></p>
+                <details>
+                    <summary><i class="fas fa-info-circle"></i> Example UPI Intent Link (Illustrative Only)</summary>
+                    <p>This is a non-functional example of how a UPI payment link would look:</p>
+                    <pre><code>upi://pay?pa=yourvpa@bank&amp;pn=VIRK&amp;tn=ORDER-DEMO-001&amp;am=1&amp;cu=INR</code></pre>
+                    <p class="note"><strong>NOTE:</strong> Replace <code>yourvpa@bank</code> with your actual UPI VPA after approval.</p>
+                </details>
+                <p class="security-note"><strong>Security:</strong> We do not store card details. Payments are processed by your UPI app or, when enabled, by our Payment Gateway partner.</p>
+            </div>
+            <p class="compliance-notice"><strong>IP Compliance Notice:</strong> All third-party names/imagery belong to their respective owners. We do not sell unlicensed content. This site uses sample placeholders only.</p>
+        </div>
+    </section>
 
-<!-- REFUNDS POLICY -->
-<section id="refunds" class="section-padding policy-section">
-  <h2>Cancellation, Return &amp; Refund Policy</h2>
-  <h3>Returns and Replacements</h3>
-  <ul>
-    <li><strong>Return Window:</strong> We offer a <strong>7-day</strong> return window from the date of delivery for items with manufacturing defects or transit damage only.</li>
-    <li><strong>Proof Required:</strong> Returns for damage/defect require mandatory <strong>unboxing photos or video proof</strong>.</li>
-    <li><strong>Non-Returnable Items:</strong> Items that are used, altered, or customized are non-returnable.</li>
-  </ul>
-  <h3>Cancellations</h3>
-  <ul>
-    <li><strong>Cancellation Window:</strong> You may cancel an order only <strong>before it has been dispatched</strong>. Please contact us immediately.</li>
-  </ul>
-  <h3>Refunds</h3>
-  <ul>
-    <li><strong>Refund Process:</strong> Once a returned item is received and inspected, and the defect is verified, the refund will be processed.</li>
-    <li><strong>Refund Method:</strong> Refunds will be credited back to the <strong>original payment method</strong> used for the transaction.</li>
-    <li><strong>Timeline:</strong> Please allow <strong>5–7 business days</strong> for the refund amount to reflect in your account after the inspection is complete.</li>
-    <li><strong>UPI Failures:</strong> In case of UPI payment failures or reversals, the customer must provide the <strong>UTR or transaction reference ID</strong> for us to track and ensure the refund is completed.</li>
-  </ul>
-</section>
+    <hr />
 
-<hr />
+    <!-- Shipping Policy -->
+    <section id="shipping" class="section-padding policy-section">
+        <div class="container">
+            <h2><i class="fas fa-shipping-fast"></i> Shipping & Delivery Policy</h2>
+            <ul>
+                <li><strong>Processing Time:</strong> Orders are typically dispatched within <strong>2–4 business days</strong> from order placement.</li>
+                <li><strong>Delivery Time:</strong> Estimated delivery is <strong>5–9 business days</strong> after dispatch, depending on location.</li>
+                <li><strong>Cash on Delivery (COD):</strong> COD is <strong>not available</strong> during the verification phase. All orders must be prepaid.</li>
+                <li><strong>Tracking:</strong> A tracking number and courier details will be shared via <strong>email/SMS</strong> once the order is dispatched.</li>
+                <li><strong>Address Errors:</strong> Customers are responsible for providing the correct address. Errors may lead to <strong>Return to Origin (RTO)</strong> and additional charges.</li>
+                <li><strong>Exceptions:</strong> Delivery timelines may be affected by public holidays, unforeseen weather events, or remote delivery locations.</li>
+            </ul>
+        </div>
+    </section>
 
-<!-- PRIVACY POLICY -->
-<section id="privacy" class="section-padding policy-section">
-  <h2>Privacy Policy</h2>
-  <ul>
-    <li><strong>Data Collection:</strong> We collect only basic personal information (Name, Email, Phone Number, Shipping Address) strictly for the purpose of fulfilling your order and providing support.</li>
-    <li><strong>Payment Data Security:</strong> We do not store any card data. Payments are processed securely by the respective UPI application or, when enabled, our Payment Gateway partner.</li>
-    <li><strong>Usage Logs:</strong> Limited logs may be collected for the prevention of fraudulent transactions and for security purposes.</li>
-    <li><strong>Data Sharing:</strong> We share essential data (Name, Address, Phone) only with courier partners to deliver your product, and with payment processors to complete your transaction.</li>
-    <li><strong>Data Retention:</strong> We retain order data for the period required by Indian tax and legal laws.</li>
-    <li><strong>User Rights:</strong> Users may request access, correction, or deletion of their personal data, subject to legal limits, by contacting our support email.</li>
-  </ul>
-</section>
+    <hr />
 
-<hr />
+    <!-- Refunds Policy -->
+    <section id="refunds" class="section-padding policy-section">
+        <div class="container">
+            <h2><i class="fas fa-undo"></i> Cancellation, Return & Refund Policy</h2>
+            <h3>Returns and Replacements</h3>
+            <ul>
+                <li><strong>Return Window:</strong> We offer a <strong>7-day</strong> return window from the date of delivery for items with manufacturing defects or transit damage only.</li>
+                <li><strong>Proof Required:</strong> Returns for damage/defect require mandatory <strong>unboxing photos or video proof</strong>.</li>
+                <li><strong>Non-Returnable Items:</strong> Items that are used, altered, or customized are non-returnable.</li>
+            </ul>
+            <h3>Cancellations</h3>
+            <ul>
+                <li><strong>Cancellation Window:</strong> You may cancel an order only <strong>before it has been dispatched</strong>. Please contact us immediately.</li>
+            </ul>
+            <h3>Refunds</h3>
+            <ul>
+                <li><strong>Refund Process:</strong> Once a returned item is received and inspected, and the defect is verified, the refund will be processed.</li>
+                <li><strong>Refund Method:</strong> Refunds will be credited back to the <strong>original payment method</strong> used for the transaction.</li>
+                <li><strong>Timeline:</strong> Please allow <strong>5–7 business days</strong> for the refund amount to reflect in your account after the inspection is complete.</li>
+                <li><strong>UPI Failures:</strong> In case of UPI payment failures or reversals, the customer must provide the <strong>UTR or transaction reference ID</strong> for us to track and ensure the refund is completed.</li>
+            </ul>
+        </div>
+    </section>
 
-<!-- TERMS & CONDITIONS -->
-<section id="terms" class="section-padding policy-section">
-  <h2>Terms &amp; Conditions</h2>
-  <ul>
-    <li><strong>Eligibility:</strong> By placing an order, you confirm you are 18 years of age or older, or have consent from a parent/guardian.</li>
-    <li><strong>Pricing:</strong> All prices are listed in Indian Rupees (INR) and are subject to taxes where applicable. Prices may change without prior notice.</li>
-    <li><strong>Risk of Loss:</strong> The risk of loss for items passes to you upon delivery of the items to the shipping carrier.</li>
-    <li><strong>Liability:</strong> Our total liability is limited to the value of the product purchased by you. We are not liable for indirect or consequential losses.</li>
-    <li><strong>Governing Law:</strong> These Terms shall be governed by and construed in accordance with the laws of India, and the local jurisdiction where our registered office is located.</li>
-    <li><strong>Intellectual Property (IP):</strong> All third‑party intellectual property (names, trademarks, imagery) belongs to their respective owners. We explicitly state that we do not sell unlicensed content.</li>
-  </ul>
-</section>
+    <hr />
 
-<hr />
+    <!-- Privacy Policy -->
+    <section id="privacy" class="section-padding policy-section">
+        <div class="container">
+            <h2><i class="fas fa-user-shield"></i> Privacy Policy</h2>
+            <ul>
+                <li><strong>Data Collection:</strong> We collect only basic personal information (Name, Email, Phone Number, Shipping Address) strictly for the purpose of fulfilling your order and providing support.</li>
+                <li><strong>Payment Data Security:</strong> We do not store any card data. Payments are processed securely by the respective UPI application or, when enabled, our Payment Gateway partner.</li>
+                <li><strong>Usage Logs:</strong> Limited logs may be collected for the prevention of fraudulent transactions and for security purposes.</li>
+                <li><strong>Data Sharing:</strong> We share essential data (Name, Address, Phone) only with courier partners to deliver your product, and with payment processors to complete your transaction.</li>
+                <li><strong>Data Retention:</strong> We retain order data for the period required by Indian tax and legal laws.</li>
+                <li><strong>User Rights:</strong> Users may request access, correction, or deletion of their personal data, subject to legal limits, by contacting our support email.</li>
+            </ul>
+        </div>
+    </section>
 
-<!-- CONTACT & GRIEVANCE -->
-<section id="contact" class="section-padding contact-section">
-  <h2>Contact &amp; Grievance Details</h2>
-  <div class="contact-details-card">
-    <h3>Brand Information</h3>
-    <p><strong>Brand Name:</strong> VIRK</p>
-    <p><strong>Owner/Grievance Officer:</strong> Simranjeet Singh</p>
-    <p><strong>Phone:</strong> <a href="tel:+917009269633">+91 7009269633</a></p>
-    <p><strong>Email:</strong> <a href="mailto:vrkboyz@gmail.com">vrkboyz@gmail.com</a></p>
-    <p><strong>Registered Address:</strong> <span class="placeholder-text">[EDIT THIS: Full Postal Address, City, State, PIN]</span></p>
-    <p><strong>GSTIN:</strong> <span class="placeholder-text">[Optional GSTIN Here]</span></p>
-    <p class="sla-note"><strong>Response SLA:</strong> We aim to provide a response within 48 hours on business days for all grievance and support queries.</p>
-  </div>
-</section>
+    <hr />
 
-  </main>  <footer>
-    <div class="container footer-content">
-      <p>&copy; <span id="yr"></span> VIRK. All Rights Reserved.</p>
-      <nav class="footer-nav">
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#terms">Terms &amp; Conditions</a>
-      </nav>
-    </div>
-  </footer>  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script></body>
+    <!-- Terms & Conditions -->
+    <section id="terms" class="section-padding policy-section">
+        <div class="container">
+            <h2><i class="fas fa-file-contract"></i> Terms & Conditions</h2>
+            <ul>
+                <li><strong>Eligibility:</strong> By placing an order, you confirm you are 18 years of age or older, or have consent from a parent/guardian.</li>
+                <li><strong>Pricing:</strong> All prices are listed in Indian Rupees (INR) and are subject to taxes where applicable. Prices may change without prior notice.</li>
+                <li><strong>Risk of Loss:</strong> The risk of loss for items passes to you upon delivery of the items to the shipping carrier.</li>
+                <li><strong>Liability:</strong> Our total liability is limited to the value of the product purchased by you. We are not liable for indirect or consequential losses.</li>
+                <li><strong>Governing Law:</strong> These Terms shall be governed by and construed in accordance with the laws of India, and the local jurisdiction where our registered office is located.</li>
+                <li><strong>Intellectual Property (IP):</strong> All third‑party intellectual property (names, trademarks, imagery) belongs to their respective owners. We explicitly state that we do not sell unlicensed content.</li>
+            </ul>
+        </div>
+    </section>
+
+    <hr />
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding contact-section">
+        <div class="container">
+            <h2><i class="fas fa-envelope"></i> Contact & Grievance Details</h2>
+            <div class="contact-details-card">
+                <h3>Brand Information</h3>
+                <p><i class="fas fa-store"></i> <strong>Brand Name:</strong> VIRK</p>
+                <p><i class="fas fa-user-tie"></i> <strong>Owner/Grievance Officer:</strong> Simranjeet Singh</p>
+                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> <a href="tel:+917009269633">+91 7009269633</a></p>
+                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:vrkboyz@gmail.com">vrkboyz@gmail.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Registered Address:</strong> <span class="placeholder-text">[EDIT THIS: Full Postal Address, City, State, PIN]</span></p>
+                <p><i class="fas fa-file-invoice"></i> <strong>GSTIN:</strong> <span class="placeholder-text">[Optional GSTIN Here]</span></p>
+                <p class="sla-note"><i class="fas fa-clock"></i> <strong>Response SLA:</strong> We aim to provide a response within 48 hours on business days for all grievance and support queries.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; <span id="yr"></span> VIRK. All Rights Reserved.</p>
+                <div class="footer-nav">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('yr').textContent = new Date().getFullYear();
+        
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
 </html>
