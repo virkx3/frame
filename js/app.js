@@ -1,5 +1,5 @@
 // State management
-let currentPage = 'home';
+let currentPage = 'VIRK';
 let cart = [];
 let searchHistory = [];
 let wishlist = [];
