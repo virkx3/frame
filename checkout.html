@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout - VIRK Frames</title><link rel="stylesheet" href="style.css"></head><body>
+<header class="site-header small"><div class="wrap"><h1><a href="index.html">VIRK Frames</a></h1></div></header>
+<div class="container"><h1>Checkout</h1>
+<form id="checkoutForm">
+  <div class="row2">
+    <div>
+      <label>Full Name</label><input id="name" required>
+      <label>Phone</label><input id="phone" required>
+      <label>Address</label><textarea id="address" required></textarea>
+    </div>
+    <div>
+      <label>City</label><input id="city" required>
+      <label>State</label><input id="state" required>
+      <label>ZIP Code</label><input id="zip" required>
+    </div>
+  </div>
+  <div class="order-summary" style="margin-top:15px">
+    <h2 style="margin:0">Order Summary</h2>
+    <p>Product: <span id="productName">—</span></p>
+    <p>Base Price: ₹<span id="basePrice">0</span></p>
+    <p>GST (18%): ₹<span id="gstAmount">0</span></p>
+    <p><b>Total: ₹<span id="totalAmount">0</span></b></p>
+  </div>
+  <button type="submit" class="btn">Proceed to Payment</button>
+</form></div>
+<script>
+  const q=new URLSearchParams(location.search);
+  const productName=q.get('name')||'Selected Product'; const price=Number(q.get('price')||0);
+  const gstRate=0.18, gst=Math.round(price*gstRate), total=price+gst;
+  basePrice.textContent=price.toFixed(0); gstAmount.textContent=gst.toFixed(0); totalAmount.textContent=total.toFixed(0); productNameEl=productName; document.getElementById('productName').textContent=productName;
+  checkoutForm.addEventListener('submit',e=>{e.preventDefault();const next=new URL('payment.html',location.href);next.searchParams.set('name',productName);next.searchParams.set('amount',total);location.href=next.toString();});
+</script>
+</body></html>
