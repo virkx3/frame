@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Payment - VIRK Frames</title><link rel="stylesheet" href="style.css">
+<style>.payment-options .btn{margin:10px 0;width:100%}.note{color:#6c757d;font-size:14px;margin-top:12px}</style>
+</head><body>
+<header class="site-header small"><div class="wrap"><h1><a href="index.html">VIRK Frames</a></h1></div></header>
+<div class="container">
+  <h1>Choose Payment Method</h1>
+  <p style="margin:0 0 10px">Order: <b id="orderName">—</b></p>
+  <p style="margin:0 0 20px">Payable: <b>₹<span id="payAmount">0</span></b></p>
+  <div class="payment-options">
+    <a class="btn" href="https://api.phonepe.com/apis/pg/checkout/v2/pay" target="_blank" rel="noopener">UPI</a>
+    <a class="btn" href="#" onclick="alert('Card checkout UI');return false;">Credit / Debit Card</a>
+    <a class="btn" href="#" onclick="alert('PayPal checkout UI');return false;">PayPal</a>
+    <a class="btn" href="#" onclick="alert('Other Methods');return false;">Other Methods</a>
+  </div>
+  <p class="note">Secure transactions are processed via trusted gateways.</p>
+</div>
+<script>
+  const q=new URLSearchParams(location.search);
+  orderName.textContent=q.get('name')||'Selected Product';
+  payAmount.textContent=q.get('amount')||'0';
+</script>
+</body></html>
