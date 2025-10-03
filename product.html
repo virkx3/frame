@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Product Details — VIRK Frames</title>
+<link rel="stylesheet" href="style.css"><script src="js/data.js"></script>
+</head><body>
+<header class="site-header small"><div class="wrap">
+  <h1><a href="index.html">VIRK Frames</a></h1>
+  <nav class="top-nav">
+    <a href="about.html">About</a><a href="shipping.html">Shipping</a><a href="refunds.html">Refund</a>
+    <a href="returns.html">Return</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a>
+  </nav></div></header>
+<main class="product">
+  <div class="breadcrumb"><a href="index.html">Home</a> › <span id="crumbName">Product</span></div>
+  <section class="detail">
+    <img id="pImage" class="detail-img" alt=""/>
+    <div>
+      <h1 id="pName" class="title">Product</h1>
+      <span id="pCategory" class="badge">Photo Frames</span>
+      <span id="pRating" class="badge">★★★★★</span>
+      <span id="pAvailability" class="badge">In stock</span>
+      <div class="meta">SKU: <span id="pSku" class="muted">VIRK-000</span></div>
+      <div class="meta">Colors: <span id="pColors" class="muted">Black</span></div>
+      <div class="meta">Stock: <span id="pStock" class="muted">—</span> units</div>
+      <h2 class="price">₹<span id="pPrice">0</span></h2>
+      <p id="pDesc">—</p>
+      <div class="cardish"><h3>Specifications</h3><ul id="pSpecs" class="list"></ul></div>
+      <div class="cardish" style="margin-top:1rem"><h3>Reviews</h3><div id="pReviews" class="list" style="list-style:none;padding-left:0"></div></div>
+      <p style="margin-top:1rem"><a id="buyNow" class="btn" href="#">Buy Now</a> &nbsp;<a href="index.html">Back</a></p>
+      <p class="muted">Shipping: 2–4 business days processing · 5–9 days delivery · 7-day returns for damage/defect.</p>
+    </div>
+  </section>
+  <section class="cardish" style="margin-top:1rem">
+    <h3>Seller</h3>
+    <p><b>VIRK</b> — Simranjeet Singh · <a href="mailto:vrkboyz@gmail.com">vrkboyz@gmail.com</a> · <a href="tel:+917009269633">+91 70092 69633</a></p>
+    <p class="muted">Address: HNO 105, Sopodera Sarjamda – New Shiv Mandir</p>
+  </section>
+</main>
+<script>
+  const id = parseInt(new URLSearchParams(location.search).get('id'),10);
+  let list = window.products?.length ? window.products : JSON.parse(localStorage.getItem('products')||'[]');
+  const p = list.find(x=>x.id===id)||list[0];
+  if(!p){ document.body.innerHTML='<div class="container"><p>Product not found.</p><p><a href="index.html">Back</a></p></div>'; }
+  else{
+    crumbName.textContent=p.name; pName.textContent=p.name;
+    pImage.src=p.image; pImage.alt=p.name;
+    pCategory.textContent=p.category||'Photo Frames';
+    pRating.textContent = (p.rating?'★'.repeat(Math.round(p.rating)):'★★★★☆')+' '+(p.rating||'');
+    pAvailability.textContent = p.available?'In stock':'Out of stock';
+    pSku.textContent='VIRK-'+String(p.id).padStart(3,'0');
+    pColors.textContent=(p.colors||[]).join(', ')||'—';
+    pStock.textContent=p.stock??'—';
+    pPrice.textContent=p.price; pDesc.textContent=p.description||'';
+    pSpecs.innerHTML=(p.specs||[]).map(s=>`<li>${s}</li>`).join('')||'<li>—</li>';
+    pReviews.innerHTML=(p.reviews||[]).map(r=>`<div style="margin:.25rem 0"><b>${r.user}</b> — ★${r.rating}<br><span class="muted">${r.comment||''}</span></div>`).join('')||'<div class="muted">No reviews yet.</div>';
+    const u=new URL('checkout.html',location.href); u.searchParams.set('id',p.id);u.searchParams.set('name',p.name);u.searchParams.set('price',p.price); buyNow.href=u.toString();
+  }
+</script>
+</body></html>
